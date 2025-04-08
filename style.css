@@ -1,0 +1,51 @@
+select,
+::picker(select) {
+  appearance: base-select;
+  overflow: hidden;
+}
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  width: 100%;
+  padding: 0 10px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+p {
+  display: flex;
+  gap: 10px;
+}
+
+label {
+  width: fit-content;
+  align-self: center;
+}
+
+select {
+  flex: 1;
+}
+select {
+  border: 2px solid #ddd;
+  background: #eee;
+  padding: 10px;
+  transition: 0.4s;
+}
+
+select:hover,
+select:focus {
+  background: #ddd;
+}
+select::picker-icon {
+  display: none;
+}
