@@ -1,51 +1,140 @@
-select,
-::picker(select) {
-  appearance: base-select;
-  overflow: hidden;
-}
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:root {
+    --IkonerAndToolbarColor: #EAEAEA;
 }
 
 html {
-  font-family: Arial, Helvetica, sans-serif;
+    font-family: "Inter";
+    font-size: 16;
 }
 
 body {
-  width: 100%;
-  padding: 0 10px;
-  max-width: 480px;
-  margin: 0 auto;
+    width: 100%;
+    padding: 0 10px;
+    /* margin: 0 auto; */
 }
 
-h2 {
-  font-size: 1.2rem;
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: lightgray;
+    height: 50px;
+
+    .LeftNav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .RightNav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
 }
 
-p {
-  display: flex;
-  gap: 10px;
+.LeftNav>div {
+    min-width: 3em;
 }
 
-label {
-  width: fit-content;
-  align-self: center;
+nav>div>p {
+    margin: 0;
+    padding: 15.8px 20px;
 }
 
-select {
-  flex: 1;
-}
-select {
-  border: 2px solid #ddd;
-  background: #eee;
-  padding: 10px;
-  transition: 0.4s;
+.dropdown {
+    float: left;
+    position: relative;
 }
 
-select:hover,
-select:focus {
-  background: #ddd;
+.dropdown .dropbtn {
+    border: none;
+    outline: none;
+    padding: 15.8px 20px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
 }
-select::picker-icon {
-  display: none;
+
+.navbar a:hover,
+.dropdown:hover .dropbtn,
+nav>div>p:hover {
+    background-color: red;
+}
+
+.dropdown-one {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-two {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0%;
+    min-width: 160px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown:hover .dropdown-one,
+#link1:hover>.dropdown-two {
+    display: block;
+}
+
+.dropdown-one .dItem {
+    color: black;
+    padding: 12px 16px;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-one .dItem:hover,
+.dropdown-two a:hover {
+    background-color: #ddd;
+}
+
+/* Drag-yta */
+.resizer {
+    width: 5px;
+    cursor: ew-resize;
+    background-color: #ccc;
+    position: absolute;
+    top: 0;
+    bottom: 100%;
+    right: 0;
+}
+
+aside.resizable {
+    position: relative;
+}
+
+aside {
+    background-color: #f3f3f3;
+    border-right: 2px solid #ccc;
+    resize: horizontal;
+    overflow: auto;
+    max-width: 600px;
+}
+
+
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .Footer-Icon-Button {
+        background: var(--IkonerAndToolbarColor);
+    }
+
 }
