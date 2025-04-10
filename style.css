@@ -56,13 +56,15 @@ header {
     padding: 15.8px 20px;
     background-color: inherit;
     font-family: inherit;
+    font-size: inherit;
     margin: 0;
 }
 
 .navbar a:hover,
 .dropdown:hover .dropbtn,
-.menu:hover {
-    background-color: red;
+.menu:hover,
+#label:hover {
+    background-color: gray;
 }
 
 .dropdown-one {
@@ -92,16 +94,21 @@ header {
     display: block;
 }
 
-.dropdown-one .dItem {
+.dropdown-one .dItem:hover,
+.dropdown-two a:hover {
+    background-color: #ddd;
+}
+
+#imageUpload {
+    display: none;
+}
+
+#label {
+    cursor:pointer;
     color: black;
     padding: 12px 16px;
     display: block;
     text-align: left;
-}
-
-.dropdown-one .dItem:hover,
-.dropdown-two a:hover {
-    background-color: #ddd;
 }
 
 /* Drag-yta */
@@ -136,7 +143,10 @@ aside {
 
     .pixuresContainer {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
+        margin-top: 1rem; 
+        gap: 0.5rem;
     }
 }
 
@@ -181,9 +191,12 @@ footer {
 
     .range-labels-wrapper {
         display: flex;
-        justify-content: space-between;
-        margin-top: 0.5rem;
         font-size: 0.9rem;
+    }
+
+    #range {
+        width: 100%;
+        margin-top: 0;
     }
 
     .range-labels-wrapper span {
@@ -201,7 +214,6 @@ footer {
 
     .Footer-Icon-Button {
         background-color: var(--IkonerAndToolbarColor);
-        justify-content: center;
     }
 
 }

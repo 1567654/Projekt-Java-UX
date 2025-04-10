@@ -63,7 +63,7 @@ closeBtn.addEventListener("click", () => {
   aside.style.display = "none"; // Dölj sidebar
 });
 
-document.getElementById('imageUpload').addEventListener('change', function(event) {
+document.getElementById('label').addEventListener('change', function(event) {
   const files = event.target.files;
   const container = document.getElementById('pixuresContainer');
   container.innerHTML = ''; // Rensa tidigare uppladdade bilder om det behövs

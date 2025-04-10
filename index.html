@@ -12,11 +12,13 @@
     <header>
         <nav class="LeftNav">
             <div class="dropdown">
-                <div class="dropbtn">File</div>
+                <button class="dropbtn">File</button>
                 <div class="dropdown-one">
-                    <div id="link1" class="dItem" href="#">Import</div>
+                    <label for="imageUpload" id="label">Import</label>
+                    <input type="file" id="imageUpload" multiple accept="image/*" />
                 </div>
             </div>
+            
             <div class="menu">Edit</div>
             <div class="menu">View</div>
             <div class="menu">Plugins</div>
@@ -43,9 +45,12 @@
                 </svg>
             </div>
 
-            <div id="importSection">
-                <input type="file" id="imageUpload" multiple accept="image/*" />
-                <div id="pixuresContainer" style="margin-top: 1rem; display: grid; gap: 0.5rem;"></div>
+            <div id="pixuresContainer">
+                <div id="pixuresContainer">
+                    <img src="download.jpg" alt="Katt">
+                    <img src="download.jpg" alt="Katt">
+                    <img src="download.jpg" alt="Katt">
+                </div>
             </div>
         </aside>
 
@@ -61,7 +66,7 @@
                         <span>100</span>
                     </div>
                 </form>
-
+                
                 <div class="Footer-Icon-Button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                         <path
