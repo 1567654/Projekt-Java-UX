@@ -7,14 +7,13 @@
 }
 
 html {
-    font-family: "Inter";
-    font-size: 16;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
 }
 
+
 body {
-    width: 100%;
-    padding: 0 10px;
-    /* margin: 0 auto; */
+    margin: 0 auto;
 }
 
 header {
@@ -41,7 +40,7 @@ header {
     min-width: 3em;
 }
 
-nav>div>p {
+.menu {
     margin: 0;
     padding: 15.8px 20px;
 }
@@ -62,7 +61,7 @@ nav>div>p {
 
 .navbar a:hover,
 .dropdown:hover .dropbtn,
-nav>div>p:hover {
+.menu:hover {
     background-color: red;
 }
 
@@ -73,6 +72,8 @@ nav>div>p:hover {
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+
 }
 
 .dropdown-two {
@@ -104,37 +105,144 @@ nav>div>p:hover {
 }
 
 /* Drag-yta */
-.resizer {
-    width: 5px;
+aside {
+    min-width: 200px;
     cursor: ew-resize;
     background-color: #ccc;
     position: absolute;
     top: 0;
     bottom: 100%;
     right: 0;
-}
+    z-index: 2;
 
-aside.resizable {
     position: relative;
-}
-
-aside {
     background-color: #f3f3f3;
     border-right: 2px solid #ccc;
     resize: horizontal;
     overflow: auto;
     max-width: 600px;
+    height: 92vh;
+
+    .closeBarIcon {
+        justify-content: flex-end;
+        cursor: pointer;
+        margin-bottom: 1rem;
+
+        display: flex;
+        justify-content: flex-end;
+
+
+    }
+
+    .pixuresContainer {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+
+main {
+    display: flex;
+}
+
+.rightMain {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position:relative;
+    width: 100%;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 3em;
+    max-height: 92vh;
+}
+
+img {
+    position: relative;
+    height: 500px;
+    width: 620px;
 }
 
 
 footer {
+    width: 100%;
+    max-width: 620px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
 
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5em;
+    }
+
+    .range-labels-wrapper {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .range-labels-wrapper span {
+        flex: 1;
+        text-align: center;
+    }
+
+    .range-labels-wrapper span:first-child {
+        text-align: left;
+    }
+
+    .range-labels-wrapper span:last-child {
+        text-align: right;
+    }
+
     .Footer-Icon-Button {
-        background: var(--IkonerAndToolbarColor);
+        background-color: var(--IkonerAndToolbarColor);
+        justify-content: center;
     }
 
 }
+
+/* Flexbox för att visa bilder i en rad med utrymme emellan */
+#pixuresContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+    margin-top: 20px;  /* Lite avstånd ovanför bildlistan */
+}
+
+/* Stil för varje bild i pixuresContainer */
+#pixuresContainer img {
+    width: 100px;   /* Storlek på miniatyrbilderna */
+    height: auto;
+    cursor: pointer; /* Ändra muspekare till en hand när man håller över */
+    border-radius: 6px; /* Rundade hörn */
+    transition: transform 0.3s ease; /* Lägger till en mjuk övergång */
+}
+
+/* När man håller muspekaren över en bild så gör vi den lite större */
+#pixuresContainer img:hover {
+    transform: scale(1.1);  /* Zoomar in bilden något vid hover */
+}
+
+/* Förhandsvisning av den valda bilden */
+#preview {
+    width: 100%;  /* Bilden ska vara så stor som sin föräldra container */
+    height: auto;
+    margin-top: 20px;
+    border-radius: 6px;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Skugga för att ge bildens förhandsvisning mer fokus */
+}
+
+/* För att dölja preview innan bild valts */
+#preview[hidden] {
+    display: none;
+}
+
+
+
