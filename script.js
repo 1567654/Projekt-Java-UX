@@ -19,41 +19,7 @@ document.addEventListener('mouseup', () => {
   document.body.style.cursor = 'default';
 });
 
-// Hantera bilduppladdning och förhandsvisning
-const upload = document.getElementById('imageUpload');
-const list = document.getElementById('imageList');
-const preview = document.getElementById('preview');
 
-upload.addEventListener('change', (event) => {
-  const files = Array.from(event.target.files);
-  list.innerHTML = ''; // Rensa listan med tidigare bilder
-  files.forEach((file) => {
-    const url = URL.createObjectURL(file);
-    const thumb = document.createElement('img');
-    thumb.src = url;
-    thumb.classList.add('thumb'); // Lägg till en klass istället för inline-styling
-    thumb.onclick = () => {
-      preview.src = url;
-      preview.hidden = false; // Visa förhandsvisningen
-    };
-    list.appendChild(thumb);
-  });
-});
-
-// När sidan har laddats (DOMContentLoaded), hantera knapptryckning
-document.addEventListener("DOMContentLoaded", function () {
-  const importBtn = document.getElementById("link1");
-  const aside = document.getElementById("resizer");
-  const imageUpload = document.getElementById("imageUpload");
-
-  importBtn.addEventListener("click", () => {
-    // Visa aside om den är dold
-    aside.style.display = "block";
-
-    // Trigga klick på filuppladdningen (öppnar filväljaren)
-    setTimeout(() => imageUpload.click(), 200); // Lägg till en liten fördröjning för att visa aside först
-  });
-});
 
 // Stäng sidebar när användaren klickar på stäng-knappen
 const closeBtn = document.querySelector('.closeBarIcon');
@@ -63,24 +29,60 @@ closeBtn.addEventListener("click", () => {
   aside.style.display = "none"; // Dölj sidebar
 });
 
-document.getElementById('label').addEventListener('change', function(event) {
-  const files = event.target.files;
-  const container = document.getElementById('pixuresContainer');
-  container.innerHTML = ''; // Rensa tidigare uppladdade bilder om det behövs
 
-  for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
 
-      reader.onload = function(e) {
-          const imgElement = document.createElement('img');
-          imgElement.src = e.target.result;
-          imgElement.style.width = '100px'; // Justera storlek på bilderna som du vill
-          imgElement.style.height = 'auto';
-          imgElement.alt = file.name;
-          container.appendChild(imgElement);
-      };
 
-      reader.readAsDataURL(file); // Läser filen och genererar en base64-data-URL
+const app = {
+  data() {
+    return {
+      images: [],
+      selectedImageIndex: null,
+      isResizing: false,
+      drawerWidth: 300,
+      canvas: null,
+      ctx: null,
+    };
+  },
+  methods: {
+    handleFileChange(event) {
+      console.log("jag händer")
+      const files = Array.from(event.target.files);
+      const imageUrls = files.map(file => URL.createObjectURL(file));
+      this.images.push(...imageUrls);
+    },
+    selectImage(idx) {
+      this.selectedImageIndex = idx;
+      this.loadImageToCanvas(this.images[idx]);
+    },
+    // loadImageToCanvas(src) {
+    //   const img = new Image();
+    //   img.src = src;
+    //   img.onload = () => {
+    //     const canvas = this.$refs.canvas;
+    //     this.ctx = canvas.getContext('2d');
+    //     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //     this.ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    //   };
+    // },
+    startResizing(event) {
+      if (event.offsetX > this.drawerWidth - 10) {
+        this.isResizing = true;
+        window.addEventListener('mousemove', this.resizeDrawer);
+        window.addEventListener('mouseup', this.stopResizing);
+      }
+    },
+    resizeDrawer(event) {
+      if (this.isResizing) {
+        const newWidth = event.clientX;
+        this.drawerWidth = Math.min(Math.max(newWidth, 200), 600);
+      }
+    },
+    stopResizing() {
+      this.isResizing = false;
+      window.removeEventListener('mousemove', this.resizeDrawer);
+      window.removeEventListener('mouseup', this.stopResizing);
+    }
   }
-});
+}
+
+Vue.createApp(app).mount("#app")
