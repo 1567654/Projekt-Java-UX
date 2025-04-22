@@ -1,0 +1,302 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --IkonerAndToolbarColor: #EAEAEA;
+}
+
+html {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+
+body {
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: lightgray;
+    height: 50px;
+
+    .LeftNav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .RightNav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
+
+.LeftNav>div {
+    min-width: 3em;
+}
+
+.menu {
+    margin: 0;
+    padding: 15.8px 20px;
+}
+
+.dropdown {
+    float: left;
+    position: relative;
+}
+
+.dropdown .dropbtn {
+    border: none;
+    outline: none;
+    padding: 15.8px 20px;
+    background-color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    margin: 0;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn,
+.menu:hover,
+#label:hover {
+    background-color: gray;
+}
+
+.dropdown-one {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+.dropdown-two {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    bottom: 4.6em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    width: 100%;
+    background-color: #f9f9f9;
+}
+.dropdown-three {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    bottom: 6.8em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    width: 100%;
+    background-color: #f9f9f9;
+}
+.dropdown-four {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    bottom: 8.9em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    width: 100%;
+    background-color: #f9f9f9;
+}
+
+.dropdown:hover .dropdown-one,
+.dropdown:hover .dropdown-two,
+.dropdown:hover .dropdown-three,
+.dropdown:hover .dropdown-four {
+    display: block;
+}
+
+.dropdown-one:hover,
+.dropdown-two:hover,
+.dropdown-three:hover,
+.dropdown-four:hover {
+    background-color: #ddd;
+}
+
+#imageUpload {
+    display: none;
+}
+
+#label {
+    cursor:pointer;
+    color: black;
+    padding: 12px 16px;
+    display: block;
+    text-align: left;
+}
+
+/* Drag-yta */
+aside {
+    min-width: 200px;
+    cursor: ew-resize;
+    background-color: #ccc;
+    position: absolute;
+    top: 0;
+    bottom: 100%;
+    right: 0;
+    z-index: 2;
+
+    position: relative;
+    background-color: #f3f3f3;
+    border-right: 2px solid #ccc;
+    resize: horizontal;
+    overflow: auto;
+    max-width: 600px;
+    height: 92vh;
+
+    .closeBarIcon {
+        justify-content: flex-end;
+        cursor: pointer;
+        margin-bottom: 1rem;
+
+        display: flex;
+        justify-content: flex-end;
+
+
+    }
+
+    .pixuresContainer {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        margin-top: 1rem; 
+        gap: 0.5rem;
+    }
+}
+
+
+
+main {
+    display: flex;
+}
+
+.rightMain {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position:relative;
+    width: 100%;
+    padding-left: 3em;
+    padding-right: 3em;
+    padding-top: 3em;
+    max-height: 92vh;
+}
+
+img {
+    position: relative;
+    height: 500px;
+    width: 620px;
+}
+
+
+footer {
+    width: 100%;
+    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0.5em;
+    }
+
+    .range-labels-wrapper {
+        display: flex;
+        font-size: 0.9rem;
+    }
+
+    #range {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .range-labels-wrapper span {
+        flex: 1;
+        text-align: center;
+    }
+
+    .range-labels-wrapper span:first-child {
+        text-align: left;
+    }
+
+    .range-labels-wrapper span:last-child {
+        text-align: right;
+    }
+
+    .Footer-Icon-Button {
+        display: flex;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: var(--IkonerAndToolbarColor);
+    }
+
+    .Footer-Icon-Button > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 2.5em;
+        padding: 0.5em;
+    }
+
+    .Footer-Icon-Button > .dropdown > .dropdown-one{
+        min-width: 100%;
+        padding: 0.5em;
+        border-radius: 0.5em;
+        bottom: 2.5em;
+    }
+
+}
+
+/* Flexbox för att visa bilder i en rad med utrymme emellan */
+#pixuresContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+    margin-top: 20px;  /* Lite avstånd ovanför bildlistan */
+}
+
+/* Stil för varje bild i pixuresContainer */
+#pixuresContainer img {
+    width: 100px;   /* Storlek på miniatyrbilderna */
+    height: auto;
+    cursor: pointer; /* Ändra muspekare till en hand när man håller över */
+    border-radius: 6px; /* Rundade hörn */
+    transition: transform 0.3s ease; /* Lägger till en mjuk övergång */
+}
+
+/* När man håller muspekaren över en bild så gör vi den lite större */
+#pixuresContainer img:hover {
+    transform: scale(1.1);  /* Zoomar in bilden något vid hover */
+}
+
+/* Förhandsvisning av den valda bilden */
+#preview {
+    width: 100%;  /* Bilden ska vara så stor som sin föräldra container */
+    height: auto;
+    margin-top: 20px;
+    border-radius: 6px;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Skugga för att ge bildens förhandsvisning mer fokus */
+}
+
+/* För att dölja preview innan bild valts */
+#preview[hidden] {
+    display: none;
+}
+
+
+
